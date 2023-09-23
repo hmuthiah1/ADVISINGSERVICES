@@ -4,16 +4,15 @@
 2.	Capture the Courses, credit hours and the degrees in which they are offered.
 3.	Capture Degree Checklist for each fiscal year and the course requirements.
 4.	Capture Curriculum Guide for each fiscal year and the course plan.
-5.	<br />
+&nbsp;
 
 **Conceptual**
 ![Conceptual](ERD1.drawio.png)
-<br />
+&nbsp;
 
 **Logical**
 ![Logical](ERD2.drawio.png)
-<br />
+<&nbsp;
 
 **Physical**
 ![Physical](ERD3.drawio.png)
-<br />
