@@ -1,0 +1,16 @@
+{% extends "base.html" %} 
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    {% for degree in degree_checklist %}
+        {% if degree.RowID == 1 %}
+            <strong>Degree_FiscalYear: {{degree.DegreeID.DegreeName}} {{degree.FiscalYear}}</strong>
+        {% endif %}
+        <ul>
+            <li> {{ degree.RequirementGroup }} </li>
+            <li> {{ degree.RequirementSubGroup }} </li>
+            <li> {{ degree.CourseInstruction }} </li>
+            <li> {{ degree.Hrs }} </li>
+        </ul>
+    {% endfor %}
+{% endblock %}

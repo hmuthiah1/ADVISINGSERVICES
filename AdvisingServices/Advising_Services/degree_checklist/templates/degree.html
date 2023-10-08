@@ -1,0 +1,10 @@
+{% extends "base.html" %} 
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    <ul>
+        {% for degree in degree_list %}
+             <li> {{ degree.DegreeID }} {{ degree.DegreeName }} </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
