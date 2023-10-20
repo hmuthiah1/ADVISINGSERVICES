@@ -1,10 +1,13 @@
 from django.shortcuts import render, HttpResponse
+from django.http import HttpResponseRedirect
 from .models import College
 from .models import Department
 from .models import Degree
 from .models import Course
 from .models import CurriculumGuide
 from .models import DegreeChecklist
+from .forms import CollegeForm
+from .forms import CurriculumForm
 
 # Create your views here.
 def home(request):
@@ -66,4 +69,42 @@ def all_degree_checklist(request):
         'degree_checklist' : degree_checklist,
         "title": "DegreeChecklist"
         }
+    )
+
+def add_college(request):
+    submitted = False
+    if request.method == 'POST':
+        form = CollegeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/add-college?submitted=True')
+    else:
+        form = CollegeForm
+        if 'submitted' in request.GET:
+            submitted = True
+        return render(request, 'add_college.html', 
+        {
+            'form': form,
+            'submitted': submitted,
+            "title": "Add College to Database"
+            }
+    )
+
+def add_curriculum(request):
+    submitted = False
+    if request.method == 'POST':
+        form = CurriculumForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/add-curriculum?submitted=True')
+    else:
+        form = CurriculumForm
+        if 'submitted' in request.GET:
+            submitted = True
+        return render(request, 'add_curriculum.html', 
+        {
+            'form': form,
+            'submitted': submitted,
+            "title": "Add Curriculum to Database"
+            }
     )

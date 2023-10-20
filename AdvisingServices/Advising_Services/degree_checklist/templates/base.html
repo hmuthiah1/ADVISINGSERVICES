@@ -47,6 +47,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="/degreechecklist">DegreeChecklist</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/add-college">Add College</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/add-curriculum">Add Curriculum</a>
+            </li>
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
@@ -69,8 +75,10 @@
         </div>
       </nav>
 
-    {% block content %}
+    <div class="mx-md-5">
+      {% block content %}
       <h1>Welcome to {{ title }}!</h1>
-    {% endblock content %}
+      {% endblock content %}
+    </div>
 </body>
 </html>
