@@ -2,6 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from .models import College
 from .models import CurriculumGuide
+from .models import DegreeChecklistPdf  
 
 # Create a college form
 class CollegeForm(ModelForm):
@@ -39,4 +40,10 @@ class CurriculumForm(ModelForm):
             'Semester': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Semester'}),
             'CourseInstruction': forms.TextInput(attrs={'class': 'form-control','placeholder': 'Course Instruction'}),
             'Hrs': forms.NumberInput(attrs={'class': 'form-control','placeholder': 'Hours'}),
-        }        
+        }      
+
+# Create a DegreeChecklistPdf form
+class DegreeChecklistPdfForm(ModelForm):
+    class Meta:
+        model = DegreeChecklistPdf
+        fields = ('DegreeID', 'FiscalYear', 'pdf')

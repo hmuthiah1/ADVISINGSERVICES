@@ -46,3 +46,8 @@ class DegreeChecklist(models.Model):
 
     class Meta:
         unique_together = (('DegreeID', 'FiscalYear','RowID'),)
+
+class DegreeChecklistPdf(models.Model):
+    DegreeID = models.ForeignKey(Degree, on_delete=models.CASCADE)
+    FiscalYear = models.CharField(max_length=20)
+    pdf = models.FileField(upload_to='DegreeChecklist/pdfs/')

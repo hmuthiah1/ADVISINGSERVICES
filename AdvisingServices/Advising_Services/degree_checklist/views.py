@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.http import HttpResponseRedirect
 from .models import College
 from .models import Department
@@ -6,8 +6,10 @@ from .models import Degree
 from .models import Course
 from .models import CurriculumGuide
 from .models import DegreeChecklist
+from .models import DegreeChecklistPdf
 from .forms import CollegeForm
 from .forms import CurriculumForm
+from .forms import DegreeChecklistPdfForm
 
 # Create your views here.
 def home(request):
@@ -107,4 +109,28 @@ def add_curriculum(request):
             'submitted': submitted,
             "title": "Add Curriculum to Database"
             }
+    )
+
+def DegreeChecklistPdf_view(request):
+    DegreeChecklistPdfs = DegreeChecklistPdf.objects.all() 
+    return render(request,'DegreeChecklistPdf_view.html', 
+    {
+        'DegreeChecklistPdfs' : DegreeChecklistPdfs,
+        "title": "View all DegreeChecklist"
+        }
+    )
+
+def DegreeChecklistPdf_upload(request):
+    if request.method == 'POST':
+        form = DegreeChecklistPdfForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('DegreeChecklistPdf-view')
+    else:
+        form = DegreeChecklistPdfForm()
+        return render(request,'DegreeChecklistPdf_upload.html', 
+            {
+                'form': form,
+                "title": "Upload DegreeChecklist in pdf"
+                }
     )

@@ -11,4 +11,6 @@ urlpatterns = [
     path('degreechecklist', views.all_degree_checklist, name="degree-checklist"),
     path('add-college', views.add_college, name="add-college"),
     path('add-curriculum', views.add_curriculum, name="add-curriculum"),
+    path('DegreeChecklistPdf-view', views.DegreeChecklistPdf_view, name="DegreeChecklistPdf-view"),
+    path('DegreeChecklistPdf-upload', views.DegreeChecklistPdf_upload, name="DegreeChecklistPdf-upload"),
 ]

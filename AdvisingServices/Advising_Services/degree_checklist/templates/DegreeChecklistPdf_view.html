@@ -1,0 +1,35 @@
+{% extends "base.html" %} 
+
+{% block content %}
+    <center>    
+        <h1>{{ title }}</h1>
+        <br></br>
+        <p>
+            <a href="{% url 'DegreeChecklistPdf-upload' %}" class="btn btn-secondary">
+                Upload DegreeChecklist
+            </a>
+        </p>
+        <table class="table mb-0">
+            <thead>
+                <tr>
+                    <th>DegreeID</th>
+                    <th>FiscalYear</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for DegreeChecklistPdf in DegreeChecklistPdfs %}
+                    <tr>
+                        <td>{{ DegreeChecklistPdf.DegreeID }}</td>
+                        <td>{{ DegreeChecklistPdf.FiscalYear }}</td>
+                        <td> 
+                            <a href="{{ DegreeChecklistPdf.pdf.url }}" class="btn btn-secondary btn-sm" target="_blank">
+                                Download PDF
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </center> 
+{% endblock %}
