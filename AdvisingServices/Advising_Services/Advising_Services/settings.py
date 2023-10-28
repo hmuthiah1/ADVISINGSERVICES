@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "degree_checklist"
+    "degree_checklist",
+    'import_export',
 ]
 
 MIDDLEWARE = [
