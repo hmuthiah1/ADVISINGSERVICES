@@ -20,7 +20,7 @@ def home(request):
     )
 
 def all_college(request):
-    college_list = College.objects.all().order_by('College')
+    college_list = College.objects.all().order_by('CollegeID')
     return render(request, 'college.html', 
     {
         'college_list' : college_list,

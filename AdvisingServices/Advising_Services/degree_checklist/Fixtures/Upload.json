@@ -1,0 +1,17 @@
+[
+    {
+        "model": "degree_checklist.college", 
+        "pk": "3", 
+        "fields": {
+            "College": "Terry B. Rogers College of Education and Social Sciences"
+        }
+    }, 
+    {
+        "model": "degree_checklist.college", 
+        "pk": "4", 
+        "fields": {
+            "College": "College of Engineering"
+        }
+    }
+]
+
