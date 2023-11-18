@@ -1,5 +1,5 @@
 {# templates/base.html #}
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,23 +41,23 @@
             <li class="nav-item">
                 <a class="nav-link" href="/course">Course</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="/curriculumguide">CurriculumGuide</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/degreechecklist">DegreeChecklist</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" href="/DegreeChecklistPdf-view">View DegreeChecklist</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/DegreeChecklistPdf-upload">Upload DegreeChecklist</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/add-college">Add College</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/add-curriculum">Add Curriculum</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/DegreeChecklistPdf-view">View DegreeChecklist</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/DegreeChecklistPdf-upload">Upload DegreeChecklist</a>
             </li>
             <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -82,6 +82,7 @@
       </nav>
 
     <div class="mx-md-5">
+      <img src="{% static 'images/pic.jpeg' %}" class="img-fluid" alt="student advising">
       {% block content %}
       <h1>Welcome to {{ title }}!</h1>
       {% endblock content %}
