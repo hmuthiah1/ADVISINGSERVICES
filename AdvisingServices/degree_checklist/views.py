@@ -10,6 +10,10 @@ from .models import DegreeChecklistPdf
 from .forms import CollegeForm
 from .forms import CurriculumForm
 from .forms import DegreeChecklistPdfForm
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializers import *
+from rest_framework import viewsets
 
 # Create your views here.
 def home(request):
@@ -134,3 +138,26 @@ def DegreeChecklistPdf_upload(request):
                 "title": "Upload DegreeChecklist in pdf"
                 }
     )
+
+# Create API view
+class CollegeApiView(APIView):
+    serializer_class = CollegeSerailizer
+    def get(self,request):
+        allColleges= College.objects.all().values()
+        return Response({"Message":"List of Colleges", "College List":allColleges})
+
+    def post(self,request):
+            #print('Request data is : ', request.data)
+            serializers_obj=CollegeSerailizer(data=request.data)
+            if(serializers_obj.is_valid()):
+                College.objects.create(CollegeID=serializers_obj.data.get("CollegeID"),
+                    College=serializers_obj.data.get("College"),
+                )
+                NewCollege = College.objects.all().filter(CollegeID=request.data["CollegeID"]).values()
+                return Response({"Message":"New College Added!", "New College":NewCollege})   
+            else:
+                return Response(serializers_obj.errors)  
+
+class CurriculumViewSet(viewsets.ModelViewSet):
+    queryset = CurriculumGuide.objects.all()
+    serializer_class = CurriculumSerailizer

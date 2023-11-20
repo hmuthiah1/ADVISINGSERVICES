@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "degree_checklist",
     'import_export',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

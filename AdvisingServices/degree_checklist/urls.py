@@ -1,5 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register('CurriculumGuideApi', views.CurriculumViewSet)
 
 urlpatterns = [
     path("", views.home, name="home"),
@@ -13,4 +17,6 @@ urlpatterns = [
     path('add-curriculum', views.add_curriculum, name="add-curriculum"),
     path('DegreeChecklistPdf-view', views.DegreeChecklistPdf_view, name="DegreeChecklistPdf-view"),
     path('DegreeChecklistPdf-upload', views.DegreeChecklistPdf_upload, name="DegreeChecklistPdf-upload"),
+    path('CollegeApi', views.CollegeApiView.as_view(), name="CollegeApi"),
+    path('',include(router.urls)),
 ]
