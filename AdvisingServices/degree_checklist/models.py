@@ -8,6 +8,11 @@ class College(models.Model):
     def __str__(self):
         return str(self.CollegeID)
 
+    @property
+    def total_college(self):
+        total_college = College.objects.filter(CollegeID=self)
+        return total_college.count()
+
 class Department(models.Model):
     DepartmentID = models.CharField(max_length=50, primary_key=True)
     DepartmentName = models.CharField(max_length=200)
@@ -29,7 +34,7 @@ class Course(models.Model):
     DegreeID = models.ForeignKey(Degree, on_delete=models.CASCADE)
     def __str__(self):
         return str(self.CourseID)
-
+   
 class CurriculumGuide(models.Model):
     DegreeID = models.ForeignKey(Degree, on_delete=models.CASCADE)
     FiscalYear = models.CharField(max_length=20)
